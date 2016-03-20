@@ -66,14 +66,14 @@
                     </a>
                 </div>
             </li>
-            <li ng-show="library_status == 'sorting'">
-                <p class="navbar-text text-danger">Working...</p>
-            </li>
         </ul>
     </div>
 
     <div class="container-fluid">
         <div class="row">
+            <div ng-show="library_status == 'sorting'" class="alert alert-warning">
+                Preparing list...
+            </div>
             <div ng-repeat="book in books">
                 <h3>{{ book.title }}</h3>
                 <dl class="dl-horizontal">
