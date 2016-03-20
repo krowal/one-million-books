@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="LibraryApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/js/dropdown.js"></script>
+    <script src="static/js/main.js"></script>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="LibraryCtrl as library">
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Welcome to Casumo's love lists</h1>
+        <p>Books in library: <span>{{ books_amount }}</span></p>
+        <button ng-show="books_amount == 0"
+                ng-click="start()"
+                class="btn btn-primary">
+            Click here to start!
+        </button>
+    </div>
+
+    <div ng-show="library_status !== null" class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li>
+                <p class="navbar-text">
+                    Genre:
+                </p>
+            </li>
+            <li>
+                <div class="navbar-btn dropdown">
+                    <a data-toggle="dropdown"
+                       role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                       href=""
+                       class="dropdown-toggle btn btn-default">
+                        {{ getSelectedGenreName() }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="" ng-click="selectGenre(null)">All</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-repeat="(id, name) in available_genres">
+                            <a href="" ng-click="selectGenre(id)">{{ name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <p class="navbar-text">Sort by:</p>
+            </li>
+            <li>
+                <div class="navbar-btn btn-group">
+                    <a ng-repeat="field in sorting.fields"
+                       ng-click="toggleSort(field.key)"
+                       ng-class="field.key == sorting.active.field ? 'btn-primary' : 'btn-default'"
+                       href=""
+                       class="btn btn-default">
+                        {{ field.name }}
+                    </a>
+                </div>
+            </li>
+            <li ng-show="library_status == 'sorting'">
+                <p class="navbar-text text-danger">Working...</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div ng-repeat="book in books">
+                <h3>{{ book.title }}</h3>
+                <dl class="dl-horizontal">
+                    <dt>Author</dt>
+                    <dd>{{ book.author.last }} {{ book.author.first }}</dd>
+                    <dt>Genre</dt>
+                    <dd>{{ available_genres[book.genre] }}</dd>
+                    <dt>Published</dt>
+                    <dd>{{book.date | date:'yyyy-MM-dd'}}</dd>
+                </dl>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

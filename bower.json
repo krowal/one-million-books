@@ -1,0 +1,22 @@
+{
+  "name": "one-million-books",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Lukasz Kowalski"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.1",
+    "bootstrap": "^3.3.6"
+  }
+}
