@@ -75,10 +75,15 @@
                 Preparing list...
             </div>
             <div ng-repeat="book in books">
-                <h3>{{ book.title }}</h3>
+                <h3>
+                    <img height="25" src="static/img/pumpkin.png"
+                         ng-show="(book.date | date:'MMdd') == '1131' && book.genre == 3"
+                    />
+                    {{ book.title }}
+                </h3>
                 <dl class="dl-horizontal">
                     <dt>Author</dt>
-                    <dd>{{ book.author.last }} {{ book.author.first }}</dd>
+                    <dd>{{ book.author.name }}</dd>
                     <dt>Genre</dt>
                     <dd>{{ available_genres[book.genre] }}</dd>
                     <dt>Published</dt>

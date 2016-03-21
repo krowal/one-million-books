@@ -15,6 +15,11 @@ LibraryApp.controller('LibraryCtrl', function ($scope, LibraryService) {
         "Finance"
     ];
 
+    $scope.available_genders = [
+        "Male",
+        "Female"
+    ];
+
     $scope.selected_genre = null;
 
     $scope.sorting = {

@@ -63,8 +63,7 @@ var Library = new (function(){
                 date:WordGenerator.timestamp(),
                 genre: Math.round((Math.random() * 4)), //0-4
                 author:{
-                    first:WordGenerator.word(2),
-                    last:WordGenerator.word(2),
+                    name:WordGenerator.word(2) + ' ' + WordGenerator.word(2),
                     gender: Math.round(Math.random())
                 }
             });
@@ -103,11 +102,10 @@ var Library = new (function(){
 
             case 'author':
                 books.sort(function(a, b){
-                    var a_name = a.author.last + a.author.first;
-                    var b_name = b.author.last + b.author.first;
-                    return a_name < b_name ? -1 : (a_name > b_name ? 1 : 0);
+                    return a.author.name < b.author.name ? -1 : (a.author.name > b.author.name ? 1 : 0);
                 });
                 break;
+
             case 'date':
                 books.sort(function(a, b){
                     return a.date - b.date;
