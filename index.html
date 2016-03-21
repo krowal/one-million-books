@@ -83,7 +83,10 @@
                 </h3>
                 <dl class="dl-horizontal">
                     <dt>Author</dt>
-                    <dd>{{ book.author.name }}</dd>
+                    <dd>
+                        {{ book.author.name }}
+                        <small class="text-muted">({{ available_genders[book.author.gender]}})</small>
+                    </dd>
                     <dt>Genre</dt>
                     <dd>{{ available_genres[book.genre] }}</dd>
                     <dt>Published</dt>
